@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Placeholder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #10B981;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #666;
+      line-height: 1.6;
+    }
+    .instructions {
+      background: #f0fdf4;
+      border-left: 4px solid #10B981;
+      padding: 20px;
+      margin-top: 30px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📄 Resume Placeholder</h1>
+    <p>This is a placeholder for your resume PDF.</p>
+    
+    <div class="instructions">
+      <h3>📝 To add your actual resume:</h3>
+      <ol>
+        <li>Export your resume as a PDF file</li>
+        <li>Name it <code>resume.pdf</code></li>
+        <li>Replace this file in the <code>public/</code> folder</li>
+        <li>The View Resume and Download Resume buttons will automatically work!</li>
+      </ol>
+      <p><strong>Note:</strong> Make sure your resume PDF is well-formatted and ATS-friendly for job applications.</p>
+    </div>
+  </div>
+</body>
+</html>
