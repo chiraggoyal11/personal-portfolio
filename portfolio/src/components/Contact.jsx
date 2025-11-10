@@ -13,13 +13,23 @@ const Contact = () => {
   }
 
   const contactLinks = [
-    { icon: FiMail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
+    { icon: FiMail, label: 'Email', value: personal.email, href: `mailto:${personal.email}`, isEmail: true },
     { icon: FiLinkedin, label: 'LinkedIn', value: 'Connect on LinkedIn', href: personal.linkedin },
     { icon: FiGithub, label: 'GitHub', value: 'View GitHub Profile', href: personal.github },
     { icon: FiTwitter, label: 'Twitter', value: 'Follow on Twitter', href: personal.twitter },
     { icon: FiMapPin, label: 'Location', value: personal.location, href: null },
-    { icon: FiPhone, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
+    { icon: FiPhone, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}`, isPhone: true },
   ]
+
+  const handleEmailClick = (e) => {
+    e.preventDefault()
+    window.location.href = `mailto:${personal.email}`
+  }
+
+  const handlePhoneClick = (e) => {
+    e.preventDefault()
+    window.location.href = `tel:${personal.phone}`
+  }
 
   return (
     <section id="contact" className="min-h-screen px-6 py-20 flex items-center">
@@ -38,24 +48,8 @@ const Contact = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {contactLinks.map((link, index) => {
             const Icon = link.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ 
-                  scale: link.href ? 1.08 : 1,
-                  rotateY: link.href ? 3 : 0,
-                  y: link.href ? -5 : 0,
-                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
-                }}
-                className={`bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-400 ease-out border border-gray-200 dark:border-gray-800 group relative ${
-                  link.href ? 'cursor-pointer' : ''
-                }`}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
+            const CardContent = (
+              <>
                 <div className="flex items-center gap-4">
                   <motion.div 
                     className="w-12 h-12 bg-gradient-to-br from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg"
@@ -66,18 +60,7 @@ const Contact = () => {
                   </motion.div>
                   <div className="flex-1">
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{link.label}</p>
-                    {link.href ? (
-                      <a
-                        href={link.href}
-                        target={link.href.startsWith('http') ? '_blank' : undefined}
-                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-gray-900 dark:text-white font-medium hover:text-light-accent dark:hover:text-dark-accent transition-colors"
-                      >
-                        {link.value}
-                      </a>
-                    ) : (
-                      <p className="text-gray-900 dark:text-white font-medium">{link.value}</p>
-                    )}
+                    <p className="text-gray-900 dark:text-white font-medium">{link.value}</p>
                   </div>
                 </div>
                 
@@ -85,6 +68,42 @@ const Contact = () => {
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-light-accent/10 to-emerald-600/10 dark:from-dark-accent/10 dark:to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out pointer-events-none rounded-2xl"
                 />
+              </>
+            )
+
+            return link.href ? (
+              <motion.a
+                key={index}
+                href={link.href}
+                onClick={link.isEmail ? handleEmailClick : link.isPhone ? handlePhoneClick : undefined}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ 
+                  scale: 1.08,
+                  rotateY: 3,
+                  y: -5,
+                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+                }}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-400 ease-out border border-gray-200 dark:border-gray-800 group relative cursor-pointer block"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {CardContent}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg transition-all duration-400 ease-out border border-gray-200 dark:border-gray-800 group relative"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                {CardContent}
               </motion.div>
             )
           })}

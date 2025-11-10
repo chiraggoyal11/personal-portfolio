@@ -128,7 +128,7 @@ export const projects = [
     title: "Personal Portfolio Website",
     description: "Built a modern, responsive portfolio website showcasing projects, skills, and professional experience with smooth animations and dark mode support.",
     technologies: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
-    github: "https://github.com/chiraggoyal11/portfolio",
+    github: "https://github.com/chiraggoyal11/personal-portfolio",
     demo: "#",
     duration: "2025",
     highlights: [
@@ -177,7 +177,7 @@ export const certificates = [
     name: "React JS – Skill Development Program",
     issuer: "BMSCE ACM Student Chapter",
     date: "May 2025",
-    credentialId: "",
+    credentialId: "BMSCE-ACM-REACT-2025",
     verifyUrl: "#",
     description: "Participated in a hands-on workshop covering core concepts of React JS."
   },
@@ -185,7 +185,7 @@ export const certificates = [
     name: "C Programming – Beginner Certification",
     issuer: "Great Learning",
     date: "2024",
-    credentialId: "",
+    credentialId: "GL-C-PROG-2024",
     verifyUrl: "#",
     description: "Completed a foundational course on C programming covering syntax, control structures, arrays, and functions."
   }
