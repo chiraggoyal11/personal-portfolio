@@ -14,6 +14,22 @@ export const personal = {
 
 export const summary = `Final-year Computer Science undergraduate specializing in software development, full-stack engineering, and machine learning. Experienced in building scalable web and Android applications using Java, Python, C++, JavaScript, Node.js, MongoDB, and Firebase. Skilled in cloud technologies, APIs, and DevOps tools with a strong focus on performance, collaboration, and problem-solving.`
 
+export const experience = [
+  {
+    title: "Software Development Intern",
+    company: "ZETA",
+    location: "Bangalore, India",
+    duration: "Upcoming",
+    type: "Internship",
+    description: "Incoming Software Development Intern at ZETA, a leading fintech company.",
+    responsibilities: [
+      "Will be working on innovative fintech solutions",
+      "Contributing to scalable backend systems",
+      "Collaborating with cross-functional teams"
+    ]
+  }
+]
+
 export const skills = {
   "Programming Languages": [
     "Java", "Python", "C++", "JavaScript", "TypeScript", "HTML5", "CSS3"
@@ -40,6 +56,7 @@ export const projects = [
     github: "https://github.com/chiraggoyal11/Kidney-Stone-Detector",
     demo: "#",
     duration: "2024",
+    image: "/kidney.jpg",
     highlights: [
       "Achieved 95% accuracy in detecting kidney stones from medical images using CNN",
       "Created intelligent system generating personalized medical prescriptions based on predictions",
@@ -53,6 +70,7 @@ export const projects = [
     github: "https://github.com/chiraggoyal11/DeNote",
     demo: "#",
     duration: "2025",
+    image: "/denote.jpg",
     highlights: [
       "Integrated Pinata + IPFS for decentralized uploads, doubling file reliability and availability",
       "Developed Node.js–Express backend with MongoDB and Multer, enabling 150+ secure file transactions daily",
@@ -66,6 +84,7 @@ export const projects = [
     github: "https://github.com/chiraggoyal11/Violet",
     demo: "#",
     duration: "2025",
+    image: "/violet.jpg",
     highlights: [
       "Designed 12+ screen Android UI using Java, XML, and Material Design, improving user navigation speed by 30%",
       "Built scalable Node.js–Express backend with JWT authentication and AWS S3 integration, boosting API performance by 45%",
@@ -76,9 +95,10 @@ export const projects = [
     title: "Banking Application (Backend)",
     description: "Designed and implemented RESTful APIs for core banking operations including fund transfers, balance checks, and transaction history with high availability.",
     technologies: ["Java", "Spring Boot", "Hibernate (JPA)", "MySQL"],
-    github: "https://github.com/chiraggoyal11/Banking-system",
+    github: "https://github.com/chiraggoyal11/Banking_system.git",
     demo: "#",
     duration: "2024 - 2025",
+    image: "/bank.jpg",
     highlights: [
       "Designed RESTful APIs for core banking operations with high availability",
       "Optimized MySQL database interactions using Hibernate (JPA) and indexing, reducing query response time by 40%",
@@ -89,9 +109,10 @@ export const projects = [
     title: "Stock Price Prediction using LSTM",
     description: "Implemented a deep learning model using LSTM networks to predict Apple Inc.'s stock prices from historical data with high accuracy.",
     technologies: ["Python", "Deep Learning", "LSTM", "TensorFlow"],
-    github: "https://github.com/chiraggoyal11/stock-prediction-using-LSTM",
+    github: "https://github.com/chiraggoyal11/stock_prediction_using_LSTM",
     demo: "#",
     duration: "2025",
+    image: "/stock.jpg",
     highlights: [
       "Implemented LSTM networks to predict Apple Inc.'s stock prices from historical data",
       "Achieved R² Score of 0.94, indicating high correlation between predicted and actual prices",
@@ -102,9 +123,10 @@ export const projects = [
     title: "Credit Card Fraud Detection",
     description: "Developed a machine learning model for credit card fraud detection with 99.92% accuracy using Logistic Regression and Random Forest.",
     technologies: ["Python", "Machine Learning", "Logistic Regression", "Random Forest"],
-    github: "https://github.com/chiraggoyal11/creditcardfrauddetection",
+    github: "https://github.com/chiraggoyal11/credit_card_fraud_detection.git",
     demo: "#",
     duration: "2025",
+    image: "/fraud.jpg",
     highlights: [
       "Achieved 99.92% accuracy using Logistic Regression and Random Forest algorithms",
       "Handled severe class imbalance (0.17% fraud cases) using under-sampling and feature scaling techniques",
@@ -112,14 +134,15 @@ export const projects = [
     ]
   },
   {
-    title: "Semantic Analyzer",
-    description: "Developed an end-to-end machine learning model for semantic text classification with automated MLOps workflows.",
+    title: "Sentiment Analyzer",
+    description: "Developed an end-to-end machine learning model for sentiment text classification with automated MLOps workflows.",
     technologies: ["Python", "Machine Learning", "MLOps", "Docker", "CI/CD", "Flask", "AWS"],
     github: "https://github.com/chiraggoyal11/Semantic-Analyzer",
     demo: "#",
     duration: "2025",
+    image: "/sentiment.jpg",
     highlights: [
-      "Developed end-to-end ML model for semantic text classification with automated MLOps workflows",
+      "Developed end-to-end ML model for sentiment text classification with automated MLOps workflows",
       "Implemented CI/CD pipelines for model training, testing, and deployment using Docker and AWS, ensuring 95% uptime",
       "Optimized containerized deployment, reducing release time by 40% and improving scalability across environments"
     ]
@@ -128,9 +151,10 @@ export const projects = [
     title: "Personal Portfolio Website",
     description: "Built a modern, responsive portfolio website showcasing projects, skills, and professional experience with smooth animations and dark mode support.",
     technologies: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
-    github: "https://github.com/chiraggoyal11/personal-portfolio",
+    github: "https://github.com/chiraggoyal11/personal-portfolio.git",
     demo: "#",
     duration: "2025",
+    image: "/portfolioo.png",
     highlights: [
       "Designed and developed a fully responsive portfolio with modern UI/UX and smooth animations using Framer Motion",
       "Implemented dark/light theme toggle with custom animations and premium cubic-bezier easing for professional feel",
@@ -179,6 +203,7 @@ export const certificates = [
     date: "May 2025",
     credentialId: "BMSCE-ACM-REACT-2025",
     verifyUrl: "#",
+    file: "/Chirag_React.pdf",
     description: "Participated in a hands-on workshop covering core concepts of React JS."
   },
   {
@@ -187,6 +212,7 @@ export const certificates = [
     date: "2024",
     credentialId: "GL-C-PROG-2024",
     verifyUrl: "#",
+    file: "/c.jpg",
     description: "Completed a foundational course on C programming covering syntax, control structures, arrays, and functions."
   }
 ]

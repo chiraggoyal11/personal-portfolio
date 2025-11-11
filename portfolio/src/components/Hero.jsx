@@ -109,31 +109,6 @@ const Hero = () => {
         </div>
       )}
 
-      {/* Glowing Particles Around Profile */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-light-accent dark:bg-dark-accent rounded-full"
-            style={{
-              left: '50%',
-              top: '50%',
-            }}
-            animate={{
-              x: [0, Math.cos(i * 45 * Math.PI / 180) * 200],
-              y: [0, Math.sin(i * 45 * Math.PI / 180) * 200],
-              opacity: [0, 1, 0],
-              scale: [0, 1.5, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="max-w-7xl mx-auto w-full px-4">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Profile Image - Left Side */}
@@ -146,11 +121,65 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative cursor-pointer"
+              className="relative cursor-pointer w-full max-w-[18rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[31rem]"
               onClick={() => setShowImageModal(true)}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] rounded-full bg-gradient-to-br from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 flex items-center justify-center overflow-hidden shadow-2xl ring-8 ring-white dark:ring-gray-800">
+              {/* Glowing Particles Orbiting Around Profile Image */}
+              <div className="absolute inset-0 -z-10 overflow-visible pointer-events-none">
+                {[...Array(8)].map((_, i) => {
+                  const angle = (i * 360) / 8;
+                  const radius = 145; // Distance from center in pixels
+                  
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute"
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        transformOrigin: '0 0',
+                      }}
+                      animate={{
+                        rotate: 360,
+                      }}
+                      transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: 'linear',
+                        delay: -(i * 12) / 8,
+                      }}
+                    >
+                      <motion.div
+                        className="w-3 h-3 rounded-full"
+                        style={{
+                          position: 'absolute',
+                          left: radius,
+                          top: -6,
+                          background: i % 2 === 0 
+                            ? 'linear-gradient(135deg, #10B981, #059669)' 
+                            : 'linear-gradient(135deg, #A855F7, #9333EA)',
+                          boxShadow: i % 2 === 0
+                            ? '0 0 20px rgba(16, 185, 129, 0.8), 0 0 35px rgba(16, 185, 129, 0.5)'
+                            : '0 0 20px rgba(168, 85, 247, 0.8), 0 0 35px rgba(168, 85, 247, 0.5)',
+                        }}
+                        animate={{
+                          scale: [1, 1.5, 1],
+                          opacity: [0.7, 1, 0.7],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                          delay: i * 0.3,
+                        }}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <div className="aspect-square w-full rounded-full bg-gradient-to-br from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 flex items-center justify-center overflow-hidden shadow-2xl ring-8 ring-white dark:ring-gray-800">
                 <img 
                   src="/profile.jpg" 
                   alt={personal.name}
@@ -168,13 +197,13 @@ const Hero = () => {
           </motion.div>
 
           {/* Content - Right Side */}
-          <div className="text-center md:text-left space-y-6 lg:space-y-8">
+          <div className="text-center md:text-left space-y-4 md:space-y-6 lg:space-y-8">
             {/* Name */}
             <motion.h1
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-none"
             >
               {personal.name}
             </motion.h1>
@@ -184,7 +213,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-gradient min-h-[3rem]"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-gradient min-h-[2rem] md:min-h-[3rem]"
             >
               {typedText}
               <motion.span
@@ -201,7 +230,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="text-gray-600 dark:text-gray-300 text-lg md:text-xl lg:text-2xl leading-relaxed text-justify max-w-3xl mx-auto md:mx-0"
+              className="text-gray-600 dark:text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-justify max-w-3xl mx-auto md:mx-0"
             >
               {summary}
             </motion.p>
@@ -211,26 +240,26 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center md:justify-start pt-4"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6 justify-center md:justify-start pt-2 md:pt-4"
             >
               <motion.button
                 onClick={handleViewResume}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-gradient-to-r from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-400 ease-out flex items-center justify-center gap-3 text-xl"
+                className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-gradient-to-r from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-400 ease-out flex items-center justify-center gap-2 md:gap-3 text-base sm:text-lg md:text-xl"
               >
-                <FiEye size={28} />
-                View Resume
+                <FiEye className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                <span className="whitespace-nowrap">View Resume</span>
               </motion.button>
               
               <motion.button
                 onClick={handleDownloadResume}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-700 rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-400 ease-out flex items-center justify-center gap-3 text-xl"
+                className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-700 rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all duration-400 ease-out flex items-center justify-center gap-2 md:gap-3 text-base sm:text-lg md:text-xl"
               >
-                <FiDownload size={28} />
-                Download Resume
+                <FiDownload className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                <span className="whitespace-nowrap">Download Resume</span>
               </motion.button>
             </motion.div>
           </div>
