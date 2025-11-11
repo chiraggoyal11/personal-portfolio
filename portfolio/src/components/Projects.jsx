@@ -17,7 +17,41 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
 
   return (
-    <section id="projects" className="min-h-screen px-6 py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="projects" className="min-h-screen px-6 py-20 relative overflow-hidden">
+      {/* Animated Particle Background - Reduced for performance */}
+      <div className="absolute inset-0 -z-10">
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 6 + 2 + 'px',
+              height: Math.random() * 6 + 2 + 'px',
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+              background: i % 2 === 0 
+                ? 'rgba(16, 185, 129, 0.3)' 
+                : 'rgba(168, 85, 247, 0.3)',
+              boxShadow: i % 2 === 0
+                ? '0 0 20px rgba(16, 185, 129, 0.5)'
+                : '0 0 20px rgba(168, 85, 247, 0.5)',
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

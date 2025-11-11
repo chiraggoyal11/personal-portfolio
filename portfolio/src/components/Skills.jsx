@@ -33,9 +33,9 @@ const Skills = () => {
 
   return (
     <section id="skills" className="min-h-screen px-6 py-20 relative overflow-hidden">
-      {/* Animated Particle Background */}
+      {/* Animated Particle Background - Reduced for performance */}
       <div className="absolute inset-0 -z-10">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"

@@ -121,65 +121,60 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative cursor-pointer w-full max-w-[18rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[31rem]"
+              className="relative cursor-pointer w-full max-w-[18rem] md:max-w-[24rem] lg:max-w-[28rem] xl:max-w-[31rem] group"
               onClick={() => setShowImageModal(true)}
               whileHover={{ scale: 1.05 }}
             >
               {/* Glowing Particles Orbiting Around Profile Image */}
               <div className="absolute inset-0 -z-10 overflow-visible pointer-events-none">
-                {[...Array(8)].map((_, i) => {
-                  const angle = (i * 360) / 8;
-                  const radius = 145; // Distance from center in pixels
+                {[...Array(12)].map((_, i) => {
+                  const angle = (i * 360) / 12;
+                  const radius = 52; // percentage from center
                   
                   return (
                     <motion.div
                       key={i}
-                      className="absolute"
+                      className="absolute w-3 h-3 rounded-full shadow-lg"
                       style={{
                         left: '50%',
                         top: '50%',
-                        transformOrigin: '0 0',
+                        background: i % 2 === 0 
+                          ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 0.9))' 
+                          : 'linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(147, 51, 234, 0.9))',
+                        boxShadow: i % 2 === 0
+                          ? '0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.3)'
+                          : '0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.3)',
                       }}
                       animate={{
-                        rotate: 360,
+                        x: [
+                          Math.cos((angle) * Math.PI / 180) * radius + '%',
+                          Math.cos((angle + 360) * Math.PI / 180) * radius + '%',
+                        ],
+                        y: [
+                          Math.sin((angle) * Math.PI / 180) * radius + '%',
+                          Math.sin((angle + 360) * Math.PI / 180) * radius + '%',
+                        ],
+                        scale: [1, 1.3, 1],
+                        opacity: [0.6, 1, 0.6],
                       }}
                       transition={{
-                        duration: 12,
+                        duration: 8,
                         repeat: Infinity,
                         ease: 'linear',
-                        delay: -(i * 12) / 8,
+                        delay: (i * 8) / 12,
                       }}
-                    >
-                      <motion.div
-                        className="w-3 h-3 rounded-full"
-                        style={{
-                          position: 'absolute',
-                          left: radius,
-                          top: -6,
-                          background: i % 2 === 0 
-                            ? 'linear-gradient(135deg, #10B981, #059669)' 
-                            : 'linear-gradient(135deg, #A855F7, #9333EA)',
-                          boxShadow: i % 2 === 0
-                            ? '0 0 20px rgba(16, 185, 129, 0.8), 0 0 35px rgba(16, 185, 129, 0.5)'
-                            : '0 0 20px rgba(168, 85, 247, 0.8), 0 0 35px rgba(168, 85, 247, 0.5)',
-                        }}
-                        animate={{
-                          scale: [1, 1.5, 1],
-                          opacity: [0.7, 1, 0.7],
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                          delay: i * 0.3,
-                        }}
-                      />
-                    </motion.div>
+                    />
                   );
                 })}
               </div>
 
-              <div className="aspect-square w-full rounded-full bg-gradient-to-br from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 flex items-center justify-center overflow-hidden shadow-2xl ring-8 ring-white dark:ring-gray-800">
+              {/* Animated Gradient Border */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-light-accent via-emerald-500 to-light-accent dark:from-dark-accent dark:via-purple-500 dark:to-dark-accent rounded-full opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 animate-gradient-xy"></div>
+              
+              {/* Glow Effect */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-light-accent/50 to-emerald-600/50 dark:from-dark-accent/50 dark:to-purple-600/50 rounded-full opacity-0 group-hover:opacity-75 blur-2xl transition-all duration-500"></div>
+
+              <div className="relative aspect-square w-full rounded-full bg-gradient-to-br from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 flex items-center justify-center overflow-hidden shadow-2xl ring-8 ring-white dark:ring-gray-800 group-hover:ring-transparent transition-all duration-500">
                 <img 
                   src="/profile.jpg" 
                   alt={personal.name}

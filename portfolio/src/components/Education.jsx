@@ -47,32 +47,40 @@ const Education = () => {
                   />
                 </motion.div>
 
-                <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-400 ease-out border border-gray-200 dark:border-gray-800 group relative"
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-light-accent/5 to-emerald-600/5 dark:from-dark-accent/5 dark:to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out pointer-events-none rounded-xl"
-                  />
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h4 className="text-xl font-bold">{edu.degree}</h4>
-                      <p className="text-light-accent dark:text-dark-accent font-medium">{edu.institution}</p>
+                <div className="relative group">
+                  {/* Animated Gradient Border */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-light-accent via-emerald-500 to-light-accent dark:from-dark-accent dark:via-purple-500 dark:to-dark-accent rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 animate-gradient-xy"></div>
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-light-accent/50 to-emerald-600/50 dark:from-dark-accent/50 dark:to-purple-600/50 rounded-xl opacity-0 group-hover:opacity-75 blur-xl transition-all duration-500"></div>
+
+                  <div className="relative bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-400 ease-out border border-gray-200 dark:border-gray-800 group-hover:border-transparent"
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-light-accent/5 to-emerald-600/5 dark:from-dark-accent/5 dark:to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-out pointer-events-none rounded-xl"
+                    />
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h4 className="text-xl font-bold">{edu.degree}</h4>
+                        <p className="text-light-accent dark:text-dark-accent font-medium">{edu.institution}</p>
+                      </div>
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
+                        {edu.period}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
-                      {edu.period}
-                    </span>
+                    <p className="text-gray-700 dark:text-gray-300 mb-3 font-medium">{edu.grade}</p>
+                    {edu.achievements && (
+                      <ul className="space-y-1">
+                        {edu.achievements.map((achievement, aIndex) => (
+                          <li key={aIndex} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                            <FiAward className="text-light-accent dark:text-dark-accent mt-1 mr-2 flex-shrink-0" size={14} />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-3 font-medium">{edu.grade}</p>
-                  {edu.achievements && (
-                    <ul className="space-y-1">
-                      {edu.achievements.map((achievement, aIndex) => (
-                        <li key={aIndex} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-                          <FiAward className="text-light-accent dark:text-dark-accent mt-1 mr-2 flex-shrink-0" size={14} />
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               </motion.div>
             ))}
@@ -90,42 +98,54 @@ const Education = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ 
+                  y: -5,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
                 onClick={() => cert.file && setSelectedCertificate(cert)}
-                className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 cursor-pointer"
+                className="relative group cursor-pointer"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <FiAward className="text-light-accent dark:text-dark-accent flex-shrink-0" size={28} />
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-                    {cert.date}
-                  </span>
-                </div>
-                <h4 className="text-lg font-bold mb-2">{cert.name}</h4>
-                <p className="text-light-accent dark:text-dark-accent font-medium text-sm mb-2">
-                  {cert.issuer}
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                  ID: {cert.credentialId}
-                </p>
-                {cert.file && (
-                  <p className="text-xs text-gray-500 dark:text-gray-400 italic">
-                    Click to view certificate
+                {/* Animated Gradient Border */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-light-accent via-emerald-500 to-light-accent dark:from-dark-accent dark:via-purple-500 dark:to-dark-accent rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 animate-gradient-xy"></div>
+                
+                {/* Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-light-accent/50 to-emerald-600/50 dark:from-dark-accent/50 dark:to-purple-600/50 rounded-xl opacity-0 group-hover:opacity-75 blur-xl transition-all duration-500"></div>
+
+                <div className="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group-hover:border-transparent">
+                  <div className="flex items-start justify-between mb-3">
+                    <FiAward className="text-light-accent dark:text-dark-accent flex-shrink-0" size={28} />
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      {cert.date}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">{cert.name}</h4>
+                  <p className="text-light-accent dark:text-dark-accent font-medium text-sm mb-2">
+                    {cert.issuer}
                   </p>
-                )}
-                {!cert.file && cert.verifyUrl && (
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm text-light-accent dark:text-dark-accent hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <FiExternalLink size={14} />
-                    Verify Certificate
-                  </motion.a>
-                )}
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                    ID: {cert.credentialId}
+                  </p>
+                  {cert.file && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic">
+                      Click to view certificate
+                    </p>
+                  )}
+                  {!cert.file && cert.verifyUrl && (
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-light-accent dark:text-dark-accent hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <FiExternalLink size={14} />
+                      Verify Certificate
+                    </motion.a>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>

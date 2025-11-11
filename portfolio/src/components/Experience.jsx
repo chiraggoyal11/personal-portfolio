@@ -32,8 +32,15 @@ const Experience = () => {
                 y: -5,
                 transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
               }}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-400 border border-gray-200 dark:border-gray-700"
+              className="relative group"
             >
+              {/* Animated Gradient Border */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-light-accent via-emerald-500 to-light-accent dark:from-dark-accent dark:via-purple-500 dark:to-dark-accent rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500 animate-gradient-xy"></div>
+              
+              {/* Glow Effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-light-accent/50 to-emerald-600/50 dark:from-dark-accent/50 dark:to-purple-600/50 rounded-2xl opacity-0 group-hover:opacity-75 blur-xl transition-all duration-500"></div>
+
+              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-400 border border-gray-200 dark:border-gray-700 group-hover:border-transparent">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                 <div className="flex-1">
                   <div className="flex items-start gap-3 mb-3">
@@ -100,6 +107,7 @@ const Experience = () => {
                     </motion.li>
                   ))}
                 </ul>
+              </div>
               </div>
             </motion.div>
           ))}
