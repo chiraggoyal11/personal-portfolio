@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -12,11 +12,18 @@ import BackToTop from './components/BackToTop'
 import ProgressIndicator from './components/ProgressIndicator'
 import Loading from './components/Loading'
 import AnimatedBackground from './components/AnimatedBackground'
-import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
+import { initGA, logPageView } from './analytics'
 
 function App() {
   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // Initialize Google Analytics when app loads
+    initGA()
+    // Log initial page view
+    logPageView()
+  }, [])
 
   return (
     <>
