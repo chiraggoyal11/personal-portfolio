@@ -160,7 +160,7 @@ const Projects = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+                <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
                   <motion.a
                     whileHover={{ scale: 1.08, x: 5 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -168,11 +168,27 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-400 ease-out text-sm font-medium shadow-md hover:shadow-xl"
                   >
                     <FiGithub size={16} />
                     View on GitHub
                   </motion.a>
+                  {project.demo && project.demo !== '#' && (
+                    <motion.a
+                      whileHover={{ scale: 1.08, x: 5 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      whileTap={{ scale: 0.95 }}
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 text-white rounded-lg hover:shadow-xl transition-all duration-400 ease-out text-sm font-medium shadow-md"
+                    >
+                      <FiExternalLink size={16} />
+                      Live Demo
+                    </motion.a>
+                  )}
                 </div>
               </div>
               
@@ -292,6 +308,19 @@ const Projects = () => {
                       <FiGithub size={20} />
                       View on GitHub
                     </motion.a>
+                    {selectedProject.demo && selectedProject.demo !== '#' && (
+                      <motion.a
+                        whileHover={{ scale: 1.05, x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        href={selectedProject.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-light-accent to-emerald-600 dark:from-dark-accent dark:to-purple-600 text-white rounded-lg hover:shadow-xl transition-all duration-400 ease-out font-medium shadow-lg"
+                      >
+                        <FiExternalLink size={20} />
+                        Live Demo
+                      </motion.a>
+                    )}
                   </div>
                 </div>
               </motion.div>
