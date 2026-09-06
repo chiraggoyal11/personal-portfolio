@@ -1,0 +1,16 @@
+{
+  "name": "personal-portfolio",
+  "install": "cd portfolio && npm ci",
+  "terminals": [
+    {
+      "name": "vite-dev",
+      "command": "cd portfolio && npm run dev -- --host 0.0.0.0 --port 5173"
+    }
+  ],
+  "ports": [
+    {
+      "name": "vite dev server",
+      "port": 5173
+    }
+  ]
+}
