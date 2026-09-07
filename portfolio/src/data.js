@@ -16,35 +16,42 @@ export const summary = `Final-year Computer Science undergraduate specializing i
 
 export const experience = [
   {
-    title: "Software Development Intern",
-    company: "ZETA",
+    title: "Graduate Intern",
+    company: "Zeta",
     location: "Bangalore, India",
-    duration: "Upcoming",
+    duration: "January 2026 - June 2026",
     type: "Internship",
-    description: "Incoming Software Development Intern at ZETA, a leading fintech company.",
+    description: "Worked as a Graduate Intern at Zeta, a leading fintech company, building and enhancing backend services and microservices powering core fintech and credit card workflows in an Agile/Scrum environment.",
     responsibilities: [
-      "Will be working on innovative fintech solutions",
-      "Contributing to scalable backend systems",
-      "Collaborating with cross-functional teams"
+      "Developed and enhanced Java and Spring Boot-based RESTful APIs and microservices powering core fintech and credit card workflows in an Agile/Scrum environment.",
+      "Built an automated API testing framework covering onboarding, transactions, repayments, and profile management, improving test coverage while reducing manual QA effort by 50%.",
+      "Designed backend logic for customer-facing features on a multi-tenant credit card platform, supporting three configurable client deployments.",
+      "Integrated Kafka, Firebase Cloud Messaging (FCM), and MoEngage to enable reliable, event-driven notifications for transaction alerts and customer engagement."
     ]
   }
 ]
 
 export const skills = {
-  "Programming Languages": [
-    "Java", "Python", "C++", "JavaScript", "TypeScript", "HTML5", "CSS3"
+  "Languages": [
+    "Java", "Python", "C++", "JavaScript", "SQL", "HTML", "CSS"
   ],
   "Frameworks & Libraries": [
-    "React.js", "Next.js", "Node.js", "Express.js", "Spring Boot", 
-    "Tailwind CSS", "Bootstrap", "Material-UI"
+    "Spring Boot", "Hibernate", "Pytest", "Node.js", "Express.js", "React.js"
   ],
-  "Databases & Tools": [
-    "MySQL", "MongoDB", "PostgreSQL", "Git", "GitHub", 
-    "VS Code", "Postman", "Docker", "AWS"
+  "Cloud & Microservices": [
+    "AWS (S3, EC2, IAM)", "REST APIs", "Microservices Architecture"
   ],
-  "Soft Skills": [
-    "Problem Solving", "Team Collaboration", "Leadership", 
-    "Communication", "Critical Thinking", "Time Management"
+  "Databases": [
+    "PostgreSQL", "MySQL", "MongoDB", "RDBMS"
+  ],
+  "DevOps & Tools": [
+    "Docker", "Git", "GitHub", "Postman", "CI/CD", "Kibana", "Firebase", "Kafka"
+  ],
+  "Testing & Practices": [
+    "Unit Testing", "JUnit", "Debugging", "Log Analysis", "Agile/Scrum", "SDLC"
+  ],
+  "Core CS": [
+    "Data Structures & Algorithms", "OOP", "DBMS", "Operating Systems"
   ]
 }
 
