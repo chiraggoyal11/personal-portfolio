@@ -75,7 +75,7 @@ export const projects = [
     description: "Built a decentralized notes application with IPFS integration for secure and reliable file storage using Jetpack Compose and Node.js backend.",
     technologies: ["Jetpack Compose", "Node.js", "Express", "MongoDB", "IPFS", "Pinata", "Multer"],
     github: "https://github.com/chiraggoyal11/DeNote",
-    demo: "#",
+    demo: "https://de-note-theta.vercel.app",
     duration: "2025",
     image: "/denote.jpg",
     highlights: [
@@ -89,7 +89,7 @@ export const projects = [
     description: "Designed and implemented a full-featured e-commerce Android application with scalable backend, secure authentication, and AWS S3 integration.",
     technologies: ["Java", "XML", "Node.js", "Express", "MongoDB", "AWS S3", "Retrofit", "JWT"],
     github: "https://github.com/chiraggoyal11/Violet",
-    demo: "#",
+    demo: "https://violet-hrwi.onrender.com",
     duration: "2025",
     image: "/violet.jpg",
     highlights: [
@@ -159,7 +159,7 @@ export const projects = [
     description: "Built a modern, responsive portfolio website showcasing projects, skills, and professional experience with smooth animations and dark mode support.",
     technologies: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
     github: "https://github.com/chiraggoyal11/personal-portfolio.git",
-    demo: "#",
+    demo: "https://chiraggoyal-portfolio.vercel.app",
     duration: "2025",
     image: "/portfolioo.png",
     highlights: [
@@ -175,9 +175,9 @@ export const education = [
     degree: "Bachelor of Technology in Computer Science",
     institution: "BMS College of Engineering",
     period: "2022 - 2026",
-    grade: "CGPA: 9.13/10",
+    grade: "CGPA: 9.23/10",
     achievements: [
-      "Excellent academic performance with 9.13 CGPA",
+      "Excellent academic performance with 9.23 CGPA",
       "Active participation in technical events and coding competitions"
     ]
   },
