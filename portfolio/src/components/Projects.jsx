@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaDatabase, FaMobile } from 'react-icons/fa'
 import { FiCalendar, FiGithub, FiExternalLink, FiX } from 'react-icons/fi'
 import { projects } from '../data'
+import { fetchGitHubProjects, mergeProjects } from '../github'
 
 const getTechIcon = (tech) => {
   const techLower = tech.toLowerCase()
@@ -15,6 +16,19 @@ const getTechIcon = (tech) => {
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
+  const [autoProjects, setAutoProjects] = useState([])
+  const [ghLoading, setGhLoading] = useState(true)
+
+  useEffect(() => {
+    let active = true
+    fetchGitHubProjects()
+      .then((repos) => { if (active) setAutoProjects(repos) })
+      .catch((err) => { if (active) console.warn('GitHub sync failed:', err) })
+      .finally(() => { if (active) setGhLoading(false) })
+    return () => { active = false }
+  }, [])
+
+  const allProjects = mergeProjects(projects, autoProjects)
 
   return (
     <section id="projects" className="min-h-screen px-6 py-20 relative overflow-hidden">
@@ -62,12 +76,16 @@ const Projects = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg">Building solutions that make a difference</p>
+          <div className="flex items-center justify-center gap-2 mt-3 text-sm text-gray-500 dark:text-gray-400">
+            <FiGithub size={14} />
+            <span>Auto-synced from GitHub{ghLoading ? ' — loading latest repositories…' : ''}</span>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {allProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={`${project.github || project.title}-${index}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -114,6 +132,12 @@ const Projects = () => {
                   </motion.div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-white/50 dark:from-gray-900/50 to-transparent" />
+                {project.autoSynced && (
+                  <span className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium bg-gray-900/80 text-white rounded-full backdrop-blur-sm">
+                    <FiGithub size={12} />
+                    GitHub
+                  </span>
+                )}
               </div>
 
               <div className="p-6">
@@ -147,6 +171,7 @@ const Projects = () => {
                 </div>
 
                 {/* Highlights */}
+                {project.highlights && project.highlights.length > 0 && (
                 <div className="mb-4">
                   <p className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Key Features:</p>
                   <ul className="space-y-1">
@@ -158,6 +183,7 @@ const Projects = () => {
                     ))}
                   </ul>
                 </div>
+                )}
 
                 {/* Links */}
                 <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
@@ -277,6 +303,7 @@ const Projects = () => {
                   </div>
 
                   {/* All Highlights */}
+                  {selectedProject.highlights && selectedProject.highlights.length > 0 && (
                   <div>
                     <h3 className="text-xl font-bold mb-3 text-gradient">Key Features & Achievements</h3>
                     <ul className="space-y-3">
@@ -294,6 +321,7 @@ const Projects = () => {
                       ))}
                     </ul>
                   </div>
+                  )}
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200 dark:border-gray-800">
